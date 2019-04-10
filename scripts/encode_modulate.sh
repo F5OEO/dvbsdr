@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# ------- MODULATION PARAMETERS --------
+# 1/4,1/3,2/5,1/2,3/5,2/3,3/4,4/5,5/6,8/9,9/10 for DVB-S2 QPSK.
+# 3/5,2/3,3/4,5/6,8/9,9/10 for DVB-S2 8PSK
+source modulateparam.sh
+FREQ=2403
+SYMBOLRATE=1000
+FECNUM=3
+FECDEN=5
+#DVBS,DVBS2
+MODE=DVBS2
+#QPSK,8PSK,16APSK,32APSK
+CONSTELLATION=QPSK
+GAIN=0.8
+# $LONG_FRAME,$SHORT_FRAME
+TYPE_FRAME=$LONG_FRAME
+# $WITH_PILOTS,WITHOUT_PILOTS
+PILOTS=$WITHOUT_PILOTS
+# ------- ENCODER PARAMETERS --------
+
+source getbitrate.sh
+
+let VIDEOBITRATE=BITRATE_TS-120000
+let BITRATE_TS=BITRATE_TS
+
+VIDEO_RESX=1280
+VIDEO_RESY=720
+#Only 25 is working well with audio
+VIDEO_FPS=25
+#Gop Size 1..400 (in frame) 
+VIDEO_GOP=100
+#PCR_PTS Latency relative ...average is 300-500
+PCR_PTS=300
+
+#VIDEO INPUT
+source videosource.sh
+#Could be $VIDEOSOURCE_PICAMERA, $VIDEOSOURCE_USB_CAM , $VIDEOSOURCE_TEST
+VIDEOSOURCE=$VIDEOSOURCE_USB_CAM
+
+#AUDIO INPUT
+source audiosource.sh
+# NONE,USB_AUDIO,FILE_WAV,BEEP
+AUDIOSOURCE=$NONE
+
+source audioin.sh
+source encode.sh | source limerf.sh
+ 
+
+ 

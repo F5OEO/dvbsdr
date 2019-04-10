@@ -1,5 +1,7 @@
 # Install environment for DVB with LimeSDR
-
+mkdir build
+mkdir bin
+cd build
 
 # ------ Install LimeSuite ---------
 
@@ -33,11 +35,15 @@ sudo apt-get install -y libfftw3-dev
 git clone https://github.com/F5OEO/libdvbmod
 cd libdvbmod/libdvbmod
 make
-cd ../../
+cd ../DvbTsToIQ/
+make
+cp dvb2iq ../../../../bin/
+
 
 #Make 
 make 
 make dvb
+cp limesdr_dvb ../../bin/
 cd ..
 
 #-------- For raspberry pi , install encoder avc2ts
@@ -45,6 +51,7 @@ git clone https://github.com/F5OEO/avc2ts
 cd avc2ts
 ./preinstall.sh
 make
+cp avc2ts ../../bin/
 cd ../
 
 #------For X86, install ffmpeg encoder
@@ -54,6 +61,8 @@ git clone https://github.com/pabr/leansdr
 cd leansdr/src/apps
 git checkout work
 make
+make embedded
+cp leandvb ../../../../bin/
 cd ../../../
 
 
@@ -70,6 +79,7 @@ cd liquid-dsp
 ./configure
 make
 sudo make install
+cp kisspectrum ../../bin/
 cd ../
 
 #make 
