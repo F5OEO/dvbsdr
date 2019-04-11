@@ -38,13 +38,13 @@ make
 cd ../DvbTsToIQ/
 make
 cp dvb2iq ../../../../bin/
-
+cd ../../
 
 #Make 
 make 
 make dvb
 cp limesdr_dvb ../../bin/
-cd ..
+cd ../
 
 #-------- For raspberry pi , install encoder avc2ts
 git clone https://github.com/F5OEO/avc2ts
@@ -79,11 +79,11 @@ cd liquid-dsp
 ./configure
 make
 sudo make install
-cp kisspectrum ../../bin/
 cd ../
 
 #make 
 make
+cp kisspectrum ../../bin/
 cd ../
 
 #--------- Install csdr ----------------
