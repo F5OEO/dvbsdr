@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # *********************************************************************
-# ************** ENCODE AND MODULATE ON LIMESDR ***********************
+# ****************** ENCODE TO A REMOTE ENCODER ***********************
 # *********************************************************************
 
 # ------- MODULATION PARAMETERS --------
@@ -64,11 +64,15 @@ source ./include/getbitrate.sh
 let TS_AUDIO_BITRATE=AUDIO_BITRATE*12/10
 let VIDEOBITRATE=(BITRATE_TS-12000-TS_AUDIO_BITRATE)*725/1000
 
+#Encode to a remote modulator
+REMOTE_IP=230.0.0.11
+REMOTE_PORT=10000
 #OUTPUT TYPE
-MODULATE=LIME
-NETWORK=""
-# Launch processes
-source ./include/encode.sh | source ./include/limerf.sh
- 
+MODULATE=""
+NETWORK="-n $REMOTE_IP:$REMOTE_PORT"
 
+
+# Launch processes
+source ./include/encode.sh
+ 
  
