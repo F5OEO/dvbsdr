@@ -4,7 +4,7 @@
 # ------- MODULATION PARAMETERS --------
 # 1/4,1/3,2/5,1/2,3/5,2/3,3/4,4/5,5/6,8/9,9/10 for DVB-S2 QPSK.
 # 3/5,2/3,3/4,5/6,8/9,9/10 for DVB-S2 8PSK
-source modulateparam.sh
+source ./include/modulateparam.sh
 FREQ=2403
 SYMBOLRATE=250
 FECNUM=3
@@ -45,7 +45,7 @@ VIDEO_GOP=100
 PCR_PTS=300
 
 #VIDEO INPUT
-source videosource.sh
+source ./include/videosource.sh
 #Could be $VIDEOSOURCE_PICAMERA, $VIDEOSOURCE_USB_CAM , $VIDEOSOURCE_TEST
 VIDEOSOURCE=$VIDEOSOURCE_USB_CAM
 
@@ -54,10 +54,10 @@ VIDEOSOURCE=$VIDEOSOURCE_USB_CAM
 # NO_AUDIO,USB_AUDIO,FILE_WAV,BEEP
 AUDIOSOURCE=USB_AUDIO
 AUDIO_BITRATE=12000
-source audioin.sh
+source ./include/audioin.sh
 
 # Bitrate
-source getbitrate.sh
+source ./include/getbitrate.sh
 let TS_AUDIO_BITRATE=AUDIO_BITRATE*12/10
 let VIDEOBITRATE=(BITRATE_TS-12000-TS_AUDIO_BITRATE)*725/1000
 
@@ -65,7 +65,7 @@ let VIDEOBITRATE=(BITRATE_TS-12000-TS_AUDIO_BITRATE)*725/1000
 MODULATE=LIME
 NETWORK=""
 # Launch processes
-source encode.sh | source limerf.sh
+source ./include/encode.sh | source ./include/limerf.sh
  
 
  

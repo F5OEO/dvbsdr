@@ -1,3 +1,0 @@
-
-BITRATE_TS=$(../bin/dvb2iq -s $SYMBOLRATE -f $FECNUM"/"$FECDEN -m $MODE -c $CONSTELLATION $FRAME $PILOTS -d)
-
