@@ -7,7 +7,7 @@ cd build
 
 #Install debian packages for LimeSuite
 sudo apt-get update
-sudo apt-get install -y git g++ cmake libsqlite3-dev libi2c-dev libusb-1.0-0-dev
+sudo apt-get install -y git g++ cmake libsqlite3-dev libi2c-dev libusb-1.0-0-dev netcat
 
 #Install latest LimeSuite
 git clone --depth=1 https://github.com/myriadrf/LimeSuite
@@ -91,6 +91,10 @@ git clone https://github.com/simonyiszk/csdr
 cd csdr
 make && sudo make install
 cd ../
+
+# End of install
+cd ../scripts
+echo "Installation finished, you scripts going to script folder "
 
 
 
