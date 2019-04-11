@@ -1,11 +1,12 @@
 #!/bin/bash
 
+
 # ------- MODULATION PARAMETERS --------
 # 1/4,1/3,2/5,1/2,3/5,2/3,3/4,4/5,5/6,8/9,9/10 for DVB-S2 QPSK.
 # 3/5,2/3,3/4,5/6,8/9,9/10 for DVB-S2 8PSK
 source modulateparam.sh
 FREQ=2403
-SYMBOLRATE=1000
+SYMBOLRATE=250
 FECNUM=3
 FECDEN=5
 #DVBS,DVBS2
@@ -17,15 +18,25 @@ GAIN=0.8
 TYPE_FRAME=$LONG_FRAME
 # $WITH_PILOTS,WITHOUT_PILOTS
 PILOTS=$WITHOUT_PILOTS
+# Upsample 1,2 or 4 : 4 delivers the best quality but should not be up to 500KS
+UPSAMPLE=2
+
 # ------- ENCODER PARAMETERS --------
 
-source getbitrate.sh
+VIDEO_RESX=352
+# 16:9 or 4:3
+RATIO=4:3
+case "$RATIO" in
+"16:9")
+let VIDEO_RESY=VIDEO_RESX*9/16 ;;
+"4:3")
+let VIDEO_RESY=VIDEO_RESX*3/4 ;;
+esac
 
-let VIDEOBITRATE=BITRATE_TS-120000
-let BITRATE_TS=BITRATE_TS
+#Uncomment if don't want to use ratio calculation
+#VIDEO_RESY=360
 
-VIDEO_RESX=1280
-VIDEO_RESY=720
+
 #Only 25 is working well with audio
 VIDEO_FPS=25
 #Gop Size 1..400 (in frame) 
@@ -39,11 +50,21 @@ source videosource.sh
 VIDEOSOURCE=$VIDEOSOURCE_USB_CAM
 
 #AUDIO INPUT
-source audiosource.sh
-# NONE,USB_AUDIO,FILE_WAV,BEEP
-AUDIOSOURCE=$NONE
-
+#source audiosource.sh
+# NO_AUDIO,USB_AUDIO,FILE_WAV,BEEP
+AUDIOSOURCE=USB_AUDIO
+AUDIO_BITRATE=12000
 source audioin.sh
+
+# Bitrate
+source getbitrate.sh
+let TS_AUDIO_BITRATE=AUDIO_BITRATE*12/10
+let VIDEOBITRATE=(BITRATE_TS-12000-TS_AUDIO_BITRATE)*725/1000
+
+#OUTPUT TYPE
+MODULATE=LIME
+NETWORK=""
+# Launch processes
 source encode.sh | source limerf.sh
  
 
