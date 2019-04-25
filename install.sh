@@ -1,3 +1,5 @@
+source ./detect_platform.sh
+
 # Install environment for DVB with LimeSDR
 mkdir build
 mkdir bin
@@ -18,6 +20,10 @@ cmake ../
 make
 sudo make install
 sudo ldconfig
+# Work for Nano but not rpi : too fix
+cd ../udev-rules/
+chmod +x install.sh
+sudo ./install.sh
 cd ../../
 
 #Update Lime firmware 
@@ -46,6 +52,9 @@ make dvb
 cp limesdr_dvb ../../bin/
 cd ../
 
+
+if  [ "$Platform" = "rpi" ] ; then
+echo installing avc2ts 
 #-------- For raspberry pi , install encoder avc2ts
 git clone https://github.com/F5OEO/avc2ts
 cd avc2ts
@@ -53,6 +62,9 @@ cd avc2ts
 make
 cp avc2ts ../../bin/
 cd ../
+fi
+
+
 
 #------For X86, install ffmpeg encoder
 
@@ -67,6 +79,8 @@ cd ../../../
 
 
 #------- Raspberry : Install KisSpectrum -------------
+if  [ "$Platform" = "rpi" ] ; then
+
 #Install debian packages
 sudo apt-get install -y fftw3-dev libjpeg-dev autoconf ttf-dejavu-core
 
@@ -85,6 +99,7 @@ cd ../
 make
 cp kisspectrum ../../bin/
 cd ../
+fi
 
 #--------- Install csdr ----------------
 git clone https://github.com/simonyiszk/csdr
