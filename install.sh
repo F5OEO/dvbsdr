@@ -64,6 +64,9 @@ cp avc2ts ../../bin/
 cd ../
 fi
 
+if  [ "$Platform" = "nano" ] ; then
+sudo apt-get install buffer ffmpeg
+fi
 
 
 #------For X86, install ffmpeg encoder
