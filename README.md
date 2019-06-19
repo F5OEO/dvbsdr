@@ -2,7 +2,7 @@
 
 **dvbsdr** is an integration of several projects around Digital Amator TeleVision using SDR technics.
 
-LimeSDRMini hardware is the main supported SDR hardware right now.
+LimeSDRMini is the main supported SDR hardware for now.
 
 This project is less user friendly than [BATC Portsdown](https://wiki.batc.org.uk/Portsdown_2019) also based on similar components.
 
@@ -67,5 +67,8 @@ If you like to reverse back to regular firmware
 ./restore_original_firmware.sh
 ```
 
+# Notes
+
+Some components are installed but not used right now (csdr,leandvb,KisSpectrum...) which will be integrated in the future (or not) to extend DATV only transmission feature.
 
 
