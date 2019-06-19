@@ -23,7 +23,7 @@ TYPE_FRAME=$SHORT_FRAME
 # $WITH_PILOTS,WITHOUT_PILOTS
 PILOTS=$WITHOUT_PILOTS
 #$WITH_FPGA,$WITHOUT_FPGA : Be Sure to update special firmware if WITH_FPGA
-FPGA_MODE=$WITHOUT_FPGA
+FPGA_MODE=$WITH_FPGA
 # Upsample 1,2 or 4 : 4 delivers the best quality but should not be up to 500KS
 UPSAMPLE=4
 
@@ -31,7 +31,7 @@ UPSAMPLE=4
 IP_PORT=12000
 
 # Launch processes
-netcat -l -u -p $IP_PORT | source ./include/limerf.sh
+nc -kluvw 1 0.0.0.0 $IP_PORT | source ./include/limerf.sh
  
 
  
