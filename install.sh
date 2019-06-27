@@ -12,7 +12,7 @@ sudo apt-get update
 sudo apt-get install -y git g++ cmake libsqlite3-dev libi2c-dev libusb-1.0-0-dev netcat
 
 #Get FPGA mapping firmware
-wget -q https://github.com/natsfr/LimeSDR_DVBSGateware/releases/download/v0.1/LimeSDR-Mini_lms7_trx_HW_1.2_auto.rpd -O LimeSDR-Mini_lms7_trx_HW_1.2_auto.rpd
+wget -q https://github.com/natsfr/LimeSDR_DVBSGateware/releases/download/v0.2/LimeSDR-Mini_lms7_trx_HW_1.2_auto.rpd -O LimeSDR-Mini_lms7_trx_HW_1.2_auto.rpd
 
 #Install latest LimeSuite
 git clone --depth=1 https://github.com/myriadrf/LimeSuite
