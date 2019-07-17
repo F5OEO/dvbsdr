@@ -18,6 +18,8 @@ MODE=DVBS2
 #QPSK,8PSK,16APSK,32APSK
 CONSTELLATION=QPSK
 GAIN=0.8
+#Digital Gain (FPGA Mode Only 1..31)
+DGAIN=31
 # $LONG_FRAME,$SHORT_FRAME
 TYPE_FRAME=$LONG_FRAME
 # $WITH_PILOTS,WITHOUT_PILOTS
@@ -26,6 +28,9 @@ PILOTS=$WITHOUT_PILOTS
 FPGA_MODE=$WITHOUT_FPGA
 # Upsample 1,2 or 4 : 4 delivers the best quality but should not be up to 500KS
 UPSAMPLE=2
+
+#CALIBRATION PROCESS : 0 Normal Tx, 1 perform a calibration and save the result (should be done only once) : Carefull, big spike when calibration, do not plug a PA.
+CALIBRATE_BEFORE_TX=1
 
 # ------- ENCODER PARAMETERS --------
 
