@@ -52,6 +52,7 @@ cd ../../
 
 #Make 
 make 
+cp limesdr_send ../../bin/
 make dvb
 cp limesdr_dvb ../../bin/
 cd ../
