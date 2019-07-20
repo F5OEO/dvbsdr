@@ -91,6 +91,7 @@ cd hacktv
 sudo apt-get install libhackrf-dev
 make
 cp hacktv ../../bin/
+cd ..
 
 #------- Raspberry : Install KisSpectrum -------------
 if  [ "$Platform" = "rpi" ] ; then
