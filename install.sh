@@ -84,6 +84,12 @@ make embedded
 cp leandvb ../../../../bin/
 cd ../../../
 
+#install Excellent Analog TV project from fsphil : hacktv
+git clone https://github.com/F5OEO/hacktv
+cd hacktv
+sudo apt-get install libhackrf-dev
+make
+cp hacktv ../../bin/
 
 #------- Raspberry : Install KisSpectrum -------------
 if  [ "$Platform" = "rpi" ] ; then
