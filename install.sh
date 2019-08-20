@@ -52,6 +52,7 @@ cd ../../
 
 #Make 
 make 
+cp limesdr_send ../../bin/
 make dvb
 cp limesdr_dvb ../../bin/
 cd ../
@@ -84,6 +85,13 @@ make embedded
 cp leandvb ../../../../bin/
 cd ../../../
 
+#install Excellent Analog TV project from fsphil : hacktv
+git clone https://github.com/F5OEO/hacktv
+cd hacktv
+sudo apt-get install libhackrf-dev
+make
+cp hacktv ../../bin/
+cd ..
 
 #------- Raspberry : Install KisSpectrum -------------
 if  [ "$Platform" = "rpi" ] ; then
