@@ -79,7 +79,7 @@ fi
 #------For X86, install ffmpeg encoder
 
 #------- Install Leandvb -----------------
-git clone https://github.com/pabr/leansdr
+git clone https://github.com/F5OEO/leansdr
 cd leansdr/src/apps
 git checkout work
 make
