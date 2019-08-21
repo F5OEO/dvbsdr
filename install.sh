@@ -10,6 +10,8 @@ cd build
 #Install debian packages for LimeSuite
 sudo apt-get update
 sudo apt-get install -y git g++ cmake libsqlite3-dev libi2c-dev libusb-1.0-0-dev netcat
+#Install for PlutoSDR
+sudo apt-get install -y libiio-dev
 
 #Get FPGA mapping firmware
 wget -q https://github.com/natsfr/LimeSDR_DVBSGateware/releases/download/v0.3/LimeSDR-Mini_lms7_trx_HW_1.2_auto.rpd -O LimeSDR-Mini_lms7_trx_HW_1.2_auto.rpd
