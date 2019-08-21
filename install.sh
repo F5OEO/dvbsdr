@@ -85,6 +85,7 @@ git checkout work
 make
 make embedded
 cp leandvb ../../../../bin/
+cp leaniiotx ../../../../bin/
 cd ../../../
 
 #install Excellent Analog TV project from fsphil : hacktv
